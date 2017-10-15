@@ -15,26 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnProperty("tplink.enabled")
 public class TPLinkConfig {
 
-    @Value("${tplink.cloudUserName}")
-    private String username;
-    @Value("${tplink.cloudPassword}")
-    private String password;
-    @Value("${tplink.deviceId}")
-    private String deviceId;
 
-    @Bean
-    public TPLinkAuthRequest getTPLinkAuthRequest() {
-        return new TPLinkAuthRequest(username, password);
-    }
 
-    @Bean
-    public TPLinkDeviceRequest getTPLinkDeviceRequest() {
-        return new TPLinkDeviceRequest();
-    }
-
-    @Bean
-    public TPLinkOnRequest getTPLinkSubmitRequest() {
-        return new TPLinkOnRequest(deviceId);
-    }
 
 }
