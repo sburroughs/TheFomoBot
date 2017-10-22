@@ -1,6 +1,5 @@
 package dsburroughs.fomo.hue;
 
-import dsburroughs.fomo.discord.DiscordInputService;
 import dsburroughs.fomo.web.FomoLevel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -18,8 +17,8 @@ public class HueController {
     private PhillipsHueService phillipsHueService;
 
     @RequestMapping("/hue")
-    private String discord() {
-        phillipsHueService.output(FomoLevel.HIGH);
+    private String hue() {
+        phillipsHueService.randomLight();
         return "FUCK YEAH. dem lighty boys";
 
     }

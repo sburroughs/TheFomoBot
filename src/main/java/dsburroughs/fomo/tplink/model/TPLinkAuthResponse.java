@@ -11,4 +11,11 @@ public class TPLinkAuthResponse {
     private Map<String, String> result;
 
 
+    public int getErrorCode() {
+        return errorCode;
+    }
+
+    public Map<String, String> getResult() {
+        return result;
+    }
 }

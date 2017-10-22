@@ -39,8 +39,8 @@ public class TPLinkService implements FomoOutputService {
     public String authenticate(final String username, final String password) {
 
         final TPLinkAuthRequest request = new TPLinkAuthRequest(username, password);
-        final ResponseEntity<String> response = restTemplate.postForEntity(AUTH_URL, request, String.class);
-        final String body = response.getBody();
+        final ResponseEntity<TPLinkAuthResponse> response = restTemplate.postForEntity(AUTH_URL, request, TPLinkAuthResponse.class);
+        final String body = response.getBody().getResult().get(0);
         logger.info(body);
         final String token = body;
         return token;
