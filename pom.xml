@@ -3,13 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dsburroughs</groupId>
-    <artifactId>discord.fomo</artifactId>
+    <artifactId>fomobot</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-
-    <name>discord.fomo</name>
-    <url>http://maven.apache.org</url>
-
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -18,10 +14,20 @@
     </parent>
 
     <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <name>fomobot</name>
+
+    <modules>
+        <module>core</module>
+        <module>input</module>
+        <module>output</module>
+        <module>common</module>
+    </modules>
 
     <build>
         <plugins>
@@ -31,85 +37,5 @@
             </plugin>
         </plugins>
     </build>
-
-
-    <dependencies>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>net.dv8tion</groupId>
-            <artifactId>JDA</artifactId>
-            <version>3.3.0_260</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.phillips.hue</groupId>
-            <artifactId>hue-sdk</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/huelocalsdk.jar</systemPath>
-        </dependency>
-
-        <dependency>
-            <groupId>com.phillips.hue</groupId>
-            <artifactId>hue-sdk-resources</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/huesdkresources.jar</systemPath>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.5</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.7</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.1.2</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>1.1.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20160810</version>
-        </dependency>
-
-        <!--TEST-->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <repositories>
-        <repository>
-            <id>jcenter</id>
-            <name>jcenter-bintray</name>
-            <url>http://jcenter.bintray.com</url>
-        </repository>
-    </repositories>
-
 
 </project>
