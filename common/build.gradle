@@ -1,0 +1,11 @@
+dependencies {
+
+    compile project(':input')
+    compile project(':output')
+
+    compile 'net.dv8tion:JDA:3.3.1_308'
+    compile files('lib/huelocalsdk.jar')
+    compile files('lib/huesdkresources.jar')
+
+
+}

@@ -1,16 +1,17 @@
 package dsburroughs.fomo.input;
 
-import dsburroughs.common.service.FomoLevel;
+import dsburroughs.fomo.common.service.FomoLevel;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by shanu on 11/20/2017.
  */
+@Service
 public class RandomInputService implements FomoInputService {
 
     private final int min = FomoLevel.NONE.getLevel();

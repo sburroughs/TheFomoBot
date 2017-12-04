@@ -1,6 +1,6 @@
 package dsburroughs.fomo.core;
 
-import dsburroughs.common.service.FomoLevel;
+import dsburroughs.fomo.common.service.FomoLevel;
 import dsburroughs.fomo.FomoOutputService;
 import dsburroughs.fomo.input.FomoInputService;
 import org.slf4j.Logger;

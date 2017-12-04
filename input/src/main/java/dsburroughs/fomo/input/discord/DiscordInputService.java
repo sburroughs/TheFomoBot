@@ -1,7 +1,8 @@
 package dsburroughs.fomo.input.discord;
 
+import dsburroughs.fomo.common.discord.DiscordService;
 import dsburroughs.fomo.input.FomoInputService;
-import dsburroughs.common.service.FomoLevel;
+import dsburroughs.fomo.common.service.FomoLevel;
 import net.dv8tion.jda.core.JDA;
 
 import net.dv8tion.jda.core.entities.Guild;
@@ -25,17 +26,14 @@ import java.util.stream.Stream;
 public class DiscordInputService implements FomoInputService {
 
     private static final Logger logger = LoggerFactory.getLogger(DiscordInputService.class);
-    private static final Set<String> BLACKLIST = Stream.of("AFK").collect(Collectors.toCollection(HashSet::new));
-    private static final Map<String, Integer> cache = new HashMap<>();
 
     @Autowired
-    private JDA jda;
+    private DiscordService discordService;
 
     @Override
     public FomoLevel getLevel() {
 
-        cacheChannelCounts();
-        int maxCount = getCacheMax();
+        int maxCount = discordService.getMax();
 
         if (maxCount == 1) {
             return FomoLevel.LOW;
@@ -53,38 +51,6 @@ public class DiscordInputService implements FomoInputService {
 
     }
 
-    private int getCacheMax() {
-        int maxCount = cache.entrySet().stream()
-                .max(Map.Entry.comparingByValue())
-                .map(Map.Entry::getValue).orElse(0);
-        return maxCount;
-    }
 
-    private void cacheChannelCounts() {
-        logger.info("Retrieving latest channel updates");
-        jda.getGuilds().stream()
-                .map(Guild::getVoiceChannels)
-                .flatMap(List::stream)
-                .filter(this::filterChannels)
-                .forEach(this::cacheChannelCount);
-        logger.info("Channel updates completed");
-    }
-
-    private boolean filterChannels(VoiceChannel channel) {
-        return !BLACKLIST.contains(channel.getName());
-    }
-
-    private void cacheChannelCount(VoiceChannel channel) {
-        final String key = channel.getName();
-        final int count = channel.getMembers().size();
-        logger.info("Caching Channel:{}:{}", key, count);
-        cache.put(key, count);
-    }
-
-    @PreDestroy
-    public void shutdownJda() {
-        logger.info("shutting down jda");
-        jda.shutdown();
-    }
 
 }

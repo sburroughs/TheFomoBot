@@ -1,6 +1,6 @@
 package dsburroughs.fomo;
 
-import dsburroughs.common.service.FomoLevel;
+import dsburroughs.fomo.common.service.FomoLevel;
 
 /**
  * Created by Sburroughs on 10/13/2017.
